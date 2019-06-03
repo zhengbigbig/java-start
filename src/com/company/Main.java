@@ -20,7 +20,8 @@ public class Main {
 
         int newHeight = jack.workout();
         System.out.println(newHeight);
-
         System.out.println(Human.getNumber());
+
+        //master
     }
 }
