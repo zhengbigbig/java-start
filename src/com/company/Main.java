@@ -11,6 +11,8 @@ public class Main {
         // 标准输出流
         PrintStream val = System.out;
         // 标准输入流
+
+        char a = 'a'; // 1字节 编码表示1字符 \71 = a , \72 = b
         InputStream val2 = System.in;
         InputStreamReader stdRender = new InputStreamReader(System.in); //字节流转字符流
         char[] buffer = new char[20];
