@@ -1,13 +1,11 @@
 package com.company;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.PrintStream;
+import java.io.*;
+import java.nio.charset.StandardCharsets;
 
 public class Main {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws FileNotFoundException, UnsupportedEncodingException {
         // 标准输出流
         PrintStream val = System.out;
         // 标准输入流
@@ -23,6 +21,38 @@ public class Main {
             e.printStackTrace();
         }
         System.out.println(length);
-        //
+
+        //从一个文件读取内容，输出到另一个文件
+        FileInputStream input = new FileInputStream("res/input.txt");
+        FileOutputStream output = new FileOutputStream("res/output.txt");
+
+        InputStreamReader reader = new InputStreamReader(input, "UTF-8");
+        OutputStreamWriter writer = new OutputStreamWriter(output, "UTF-8");
+
+        BufferedReader bufferedReader = new BufferedReader(reader);
+        PrintWriter printWriter = new PrintWriter(writer);
+
+
+        try {
+            String content = "";
+            String line = null;
+            while ((line = bufferedReader.readLine()) != null) {
+                content += line + "\n";
+            }
+
+            reader.close();
+            input.close();
+
+            System.out.println(content);
+            printWriter.print(content);
+
+            printWriter.close();
+            output.close();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
     }
 }
